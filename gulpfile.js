@@ -1,4 +1,4 @@
-const { src, dest, watch, parallel } = require('gulp');
+const { src, dest, watch, parallel, series } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
@@ -9,7 +9,6 @@ const terser = require('gulp-terser-js');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
-const gulp = require('gulp');
 
 const paths = {
     scss: 'src/scss/**/*.scss',
@@ -17,18 +16,13 @@ const paths = {
     imagenes: 'src/img/**/*'
 };
 
-gulp.task('build', gulp.series(css, javascript, imagenes, versionWebp, function(done) {
-    console.log('Build complete');
-    done();
-}))
-function css(done) {
+function css() {
     return src(paths.scss)
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write('.'))
         .pipe(dest('./build/css'));
-    done();
 }
 
 function javascript() {
@@ -48,9 +42,9 @@ function imagenes() {
 }
 
 async function versionWebp() {
-    const { default: webp } = await import('gulp-webp'); // Cambio aquí
+    const { default: webp } = await import('gulp-webp');
     return src(paths.imagenes)
-        .pipe(webp()) // Cambio aquí
+        .pipe(webp())
         .pipe(dest('build/img'))
 }
 
@@ -60,8 +54,9 @@ function watchArchivos() {
     watch(paths.imagenes, imagenes);
     watch(paths.imagenes, versionWebp);
 }
-  
+
 exports.default = parallel(css, javascript, imagenes, versionWebp, watchArchivos); 
+
 exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
     console.log('Build complete');
     done();
