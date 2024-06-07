@@ -17,11 +17,10 @@ const paths = {
     imagenes: 'src/img/**/*'
 };
 
-gulp.task('build', function() {
-    return gulp.src('src/**/*.js') // Especifica tus archivos de origen
-      .pipe(gulp.dest('dist')); // Especifica el directorio de destino
-});
-
+gulp.task('build', gulp.series(css, javascript, imagenes, versionWebp, function(done) {
+    console.log('Build complete');
+    done();
+}))
 function css(done) {
     return src(paths.scss)
         .pipe(sourcemaps.init())
@@ -63,4 +62,7 @@ function watchArchivos() {
 }
   
 exports.default = parallel(css, javascript, imagenes, versionWebp, watchArchivos); 
-exports.build = parallel(css, javascript, imagenes, versionWebp);
+exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
+    console.log('Build complete');
+    done();
+});
