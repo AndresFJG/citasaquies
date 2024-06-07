@@ -1,12 +1,12 @@
 {
-  "name": "app-salon-php-mvc-sass",
+  "name": "aquies",
   "version": "1.0.0",
-  "description": "AppSalon - Curso Desarrollo web Completo",
-  "author": "Juan De la torre @codigoconjuan",
+  "description": "App reserva citas - Andrés Jaramillo",
+  "author": "Andres Jaramillo",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "license": "ISC",
   "devDependencies": {
@@ -20,7 +20,13 @@
     "sharp": "^0.33.3"
   },
   "dependencies": {
+    "browser-sync": "^3.0.2",
+    "del": "^7.1.0",
     "express": "^4.19.2",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^9.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "twilio": "^5.1.0"
   }
 }
