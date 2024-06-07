@@ -17,6 +17,13 @@ const paths = {
     imagenes: 'src/img/**/*'
 };
 
+const gulp = require('gulp');
+
+gulp.task('build', function() {
+  return gulp.src('src/**/*.js') // Especifica tus archivos de origen
+    .pipe(gulp.dest('dist')); // Especifica el directorio de destino
+});
+
 function css(done) {
     return src(paths.scss)
         .pipe(sourcemaps.init())
