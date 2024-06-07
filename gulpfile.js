@@ -11,9 +11,9 @@ const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 
 const paths = {
-    scss: 'src/scss/**/*.scss',
+    imagenes: 'src/img/**/*',
     js: 'src/js/**/*.js',
-    imagenes: 'src/img/**/*'
+    scss: 'src/scss/**/*.scss'
 };
 
 function css() {
