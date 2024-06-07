@@ -8,7 +8,6 @@ const concat = require('gulp-concat');
 const terser = require('gulp-terser-js');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
-const notify = require('gulp-notify');
 const cache = require('gulp-cache');
 const gulp = require('gulp');
 
@@ -47,7 +46,6 @@ function imagenes() {
     return src(paths.imagenes)
         .pipe(cache(imagemin({ optimizationLevel: 3 })))
         .pipe(dest('build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
 }
 
 async function versionWebp() {
@@ -55,7 +53,6 @@ async function versionWebp() {
     return src(paths.imagenes)
         .pipe(webp()) // Cambio aquí
         .pipe(dest('build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
 }
 
 function watchArchivos() {
