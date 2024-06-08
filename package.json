@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp build webpack --config webpack.config.js"
-
   },
   "license": "ISC",
   "devDependencies": {
@@ -29,7 +28,9 @@
     "gulp-webp": "^5.0.0",
     "postcss-import": "^16.1.0",
     "sass": "^1.75.0",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "browser-sync": "^3.0.2",

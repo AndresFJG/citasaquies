@@ -9,6 +9,8 @@ const terser = require('gulp-terser-js');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
 
 const paths = {
     imagenes: 'src/img/**/*',
@@ -40,6 +42,11 @@ function imagenes() {
         .pipe(cache(imagemin({ optimizationLevel: 3 })))
         .pipe(dest('build/img'))
 }
+function webpackTask() {
+    return src('src/entry.js')
+        .pipe(webpackStream(require('./webpack.config.js'), webpack))
+        .pipe(dest('dist'));
+}
 
 async function versionWebp() {
     const { default: webp } = await import('gulp-webp');
@@ -62,3 +69,5 @@ exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
     console.log('Build complete');
     done();
 });
+exports.webpack = webpackTask;
+
