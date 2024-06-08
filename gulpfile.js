@@ -9,7 +9,6 @@ const terser = require('gulp-terser-js');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
-const del = require('del'); // Agregamos la dependencia 'del' para eliminar directorios
 
 const paths = {
     imagenes: 'src/img/**/*',
@@ -48,21 +47,18 @@ async function versionWebp() {
         .pipe(webp())
         .pipe(dest('build/img'))
 }
-
-function limpiar() {
-    return del(['build']); // Agregamos la tarea para limpiar el directorio de construcción
-}
-
 function watchArchivos() {
     watch(paths.scss, css);
     watch(paths.js, javascript);
     watch(paths.imagenes, imagenes);
-    watch(paths.imagenes, versionWebp);
+    watch(paths.imagenes, { ignoreInitial: false }, versionWebp).on('change', function(path, stats) {
+        console.log(`File ${path} was changed`);
+    });
 }
 
 exports.default = parallel(css, javascript, imagenes, versionWebp, watchArchivos); 
 
-exports.build = series(limpiar, css, javascript, imagenes, versionWebp, function(done) {
+exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
     console.log('Build complete');
     done();
 });
