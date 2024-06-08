@@ -56,15 +56,9 @@ function watchArchivos() {
     });
 }
 
-function build() {
-    return src('source-files')
-        // Aquí van tus tareas de construcción
-        .pipe(dest('dist'));
-}
-
 exports.default = parallel(css, javascript, imagenes, versionWebp, watchArchivos); 
 
-exports.build = series(css, javascript, imagenes, versionWebp, build, function(done) {
+exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
     console.log('Build complete');
     done();
 });
