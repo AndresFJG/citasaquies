@@ -9,8 +9,6 @@ const terser = require('gulp-terser-js');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
-const webpack = require('webpack');
-const webpackStream = require('webpack-stream');
 
 const paths = {
     imagenes: 'src/img/**/*',
@@ -69,5 +67,4 @@ exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
     console.log('Build complete');
     done();
 });
-exports.webpack = webpackTask;
 
