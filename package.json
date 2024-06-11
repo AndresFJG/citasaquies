@@ -5,16 +5,16 @@
   "author": "Andres Jaramillo",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp",
     "build": "gulp build"
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "autoprefixer": "^10.4.19",
-    "cssnano": "^7.0.2",
+    "cssnano": "^5.0.2",
     "del": "^7.1.0",
-    "glob": "^10.3.12",
-    "gulp": "^5.0.0",
+    "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
@@ -27,16 +27,16 @@
     "gulp-terser-js": "^5.2.2",
     "gulp-webp": "^5.0.0",
     "postcss-import": "^16.1.0",
-    "sass": "^1.75.0",
+    "sass": "^1.35.1",
     "sharp": "^0.33.3"
   },
   "dependencies": {
-    "browser-sync": "^3.0.2",
-    "express": "^4.19.2",
+    "browser-sync": "^2.27.7",
+    "express": "^4.17.1",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-sourcemaps": "^3.0.0",
-    "node-notifier": "^10.0.1",
-    "twilio": "^5.1.0"
+    "node-notifier": "^8.0.0",
+    "twilio": "^3.66.0"
   }
 }
