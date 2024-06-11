@@ -5,6 +5,7 @@
   "author": "Andres Jaramillo",
   "main": "index.js",
  "scripts": {
+  "dev": "gulp",
   "build": "gulp build && xcopy /s build\\* dist\\"
 },
   "license": "ISC",
