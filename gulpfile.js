@@ -87,7 +87,6 @@ import('gulp-webp').then((gulpWebp) => {
     // Maneja cualquier error
     console.error(error);
 });
-
 const paths = {
     scss: 'src/scss/**/*.scss',
     js: 'src/js/**/*.js',
