@@ -80,13 +80,13 @@ const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
 const cache = require('gulp-cache');
-const webp = require('gulp-webp');
-// import('gulp-webp').then((gulpWebp) => {
-//     // Usa gulpWebp aquí
-//   }).catch((error) => {
-//     // Maneja cualquier error
-//     console.error(error);
-//   });
+// const webp = require('gulp-webp');
+import('gulp-webp').then((gulpWebp) => {
+    // Usa gulpWebp aquí
+}).catch((error) => {
+    // Maneja cualquier error
+    console.error(error);
+});
 
 const paths = {
     scss: 'src/scss/**/*.scss',
@@ -123,11 +123,23 @@ function imagenes() {
         .pipe(notify({ message: 'Imagen Completada'}));
 }
 
+// function versionWebp() {
+//     return src(paths.imagenes)
+//         .pipe( webp() )
+//         .pipe(dest('build/img'))
+//         .pipe(notify({ message: 'Imagen Completada'}));
+// }
 function versionWebp() {
-    return src(paths.imagenes)
-        .pipe( webp() )
-        .pipe(dest('build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
+    return import('gulp-webp')
+        .then((gulpWebp) => {
+            return src(paths.imagenes)
+                .pipe(gulpWebp.default()) // Accede al módulo gulp-webp con .default()
+                .pipe(dest('build/img'))
+                .pipe(notify({ message: 'Imagen Completada'}));
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
 
