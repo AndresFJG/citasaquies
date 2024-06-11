@@ -148,7 +148,8 @@ function watchArchivos() {
     watch( paths.imagenes, imagenes );
     watch( paths.imagenes, versionWebp );
 }
-  
+ exports.css = css; 
+ exports.watchArchivos = watchArchivos; 
 exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos ); 
 exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
          console.log('Build complete');
