@@ -146,7 +146,6 @@ function mostrarServicios(servicios) {
         document.querySelector('#servicios').appendChild(servicioDiv);
     });
 }
-
 function seleccionarServicio(servicio) {
     const { id } = servicio;
     const { servicios } = cita;
