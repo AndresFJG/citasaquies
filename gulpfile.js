@@ -139,8 +139,7 @@ function versionWebp() {
         .then((gulpWebp) => {
             return src(paths.imagenes)
                 .pipe(gulpWebp.default()) // Accede al módulo gulp-webp con .default()
-                .pipe(dest('build/img'))
-                .pipe(notify({ message: 'Imagen Completada'}));
+                .pipe(dest('build/img'));
         })
         .catch((error) => {
             console.error(error);
