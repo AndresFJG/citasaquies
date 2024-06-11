@@ -1,0 +1,9 @@
+# Ignorar el node_modules
+node_modules
+
+# ignorar el vendor
+vendor
+
+#Ignora archivos del sistema MAC
+.DS_Store
+includes/.env
