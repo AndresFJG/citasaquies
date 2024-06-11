@@ -93,6 +93,14 @@ const paths = {
     imagenes: 'src/img/**/*'
 }
 
+function build() {
+    return src('build/**/*')
+      .pipe(rename(function(path) {
+        path.dirname = path.dirname.replace(/^build/, 'dist');
+      }))
+      .pipe(dest('dist'));
+  }
+
 // css es una función que se puede llamar automaticamente
 function css() {
     return src(paths.scss)
@@ -151,7 +159,7 @@ function watchArchivos() {
  exports.css = css; 
  exports.watchArchivos = watchArchivos; 
 exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos ); 
-exports.build = series(css, javascript, imagenes, versionWebp, function(done) {
+exports.build = series(css, javascript, imagenes, versionWebp, build, function(done) {
          console.log('Build complete');
          done();
      });

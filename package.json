@@ -4,9 +4,9 @@
   "description": "App reserva citas - Andrés Jaramillo",
   "author": "Andres Jaramillo",
   "main": "index.js",
-  "scripts": {
-    "build": "gulp build"
-  },
+ "scripts": {
+  "build": "gulp build && xcopy /s build\\* dist\\"
+},
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.15.0",
