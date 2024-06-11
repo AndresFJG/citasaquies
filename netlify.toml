@@ -1,0 +1,3 @@
+[build]
+  command = "npm run build"
+  node_version = "10.8.1"  # Especifica la versión de Node.js aquí
