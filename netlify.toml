@@ -1,6 +1,9 @@
 [build]
-  command = "npm run build"
-  publish = "build"
+  command = "npm run build"  # El comando para construir tu aplicación
+  publish = "dist"           # La carpeta que contiene los archivos estáticos para implementar
 
-[build.environment]
-  NODE_VERSION = 14
+[[plugins]]
+  package = "@netlify/plugin-cache"  # Plugin para caché de dependencias
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"  # Plugin específico para Next.js
